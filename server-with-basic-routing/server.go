@@ -26,4 +26,3 @@ func showTime(w http.ResponseWriter, r *http.Request) {
 	ss := fmt.Sprintf("Time: %s\n", time)
 	w.Write([]byte(ss))
 }
-git
