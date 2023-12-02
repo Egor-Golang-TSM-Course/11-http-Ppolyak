@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/go-chi/chi/v5"
 	"io"
 	"log"
 	"net/http"
@@ -18,14 +19,21 @@ type Person struct {
 }
 
 func startServer() {
-	mux := http.NewServeMux()
-	mux.HandleFunc("/user", user)
+	/*	mux := http.NewServeMux()
+		mux.HandleFunc("/user", user)*/
 	log.Println("Запуск веб-сервера на http://127.0.0.1:7575")
-	err := http.ListenAndServe(":7575", mux)
+	err := http.ListenAndServe(":7575", routes())
 	log.Fatal(err)
 }
 
-func user(w http.ResponseWriter, r *http.Request) {
+func routes() http.Handler {
+	r := chi.NewRouter()
+	r.MethodFunc("Post", "/user", postHandler)
+
+	return r
+}
+
+func postHandler(w http.ResponseWriter, r *http.Request) {
 	var resp Person
 	if r.URL.Path != "/user" {
 		http.NotFound(w, r)
