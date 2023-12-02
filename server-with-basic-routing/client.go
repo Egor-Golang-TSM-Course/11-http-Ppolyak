@@ -8,7 +8,6 @@ import (
 )
 
 func getHomePage() {
-
 	homeUrl := "http://localhost:7575/"
 	//timeUrl := "http://localhost:7575/time"
 	response, err := http.Get(homeUrl)
