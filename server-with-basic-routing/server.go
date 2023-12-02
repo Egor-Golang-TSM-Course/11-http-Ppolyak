@@ -25,6 +25,7 @@ func home(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
+	log.Println("Home page opened")
 	w.Write([]byte("Home page"))
 }
 
@@ -33,6 +34,7 @@ func showTime(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 		return
 	}
+	log.Println("Time page opened")
 	time := time2.Now()
 	ss := fmt.Sprintf("Time: %s\n", time)
 	w.Write([]byte(ss))
