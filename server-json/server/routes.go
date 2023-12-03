@@ -8,6 +8,6 @@ import (
 func routes() http.Handler {
 	r := chi.NewRouter()
 	r.MethodFunc("Post", "/user", postHandler)
-
+	r.MethodFunc("Get", "/user", getHandler)
 	return r
 }
