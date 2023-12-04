@@ -17,10 +17,11 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		log.Fatal(err)
-	} else {
-		err = json.Unmarshal(body, &resp)
-		sl = append(sl, string(body))
 	}
+
+	err = json.Unmarshal(body, &resp)
+	sl = append(sl, string(body))
+
 	if err != nil {
 		fmt.Println(w, "can't unmarshal: ", err.Error())
 	}

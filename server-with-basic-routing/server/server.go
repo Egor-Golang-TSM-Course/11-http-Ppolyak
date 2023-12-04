@@ -4,10 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-)
-
-import (
-	time2 "time"
+	"time"
 )
 
 func main() {
@@ -38,7 +35,6 @@ func showTime(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	log.Println("Time page opened")
-	time := time2.Now()
-	ss := fmt.Sprintf("Time: %s\n", time)
+	ss := fmt.Sprintf("Time: %s\n", time.Now().String())
 	w.Write([]byte(ss))
 }
