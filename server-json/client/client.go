@@ -9,7 +9,27 @@ import (
 )
 
 func main() {
+	getUsers()
+	postUser()
+}
 
+func getUsers() {
+	url := "http://localhost:7575/user"
+	response, err := http.Get(url)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer response.Body.Close()
+
+	body, err := io.ReadAll(response.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Received response: %s\n", string(body))
+
+}
+
+func postUser() {
 	url := "http://localhost:7575/user"
 	data := []byte(`
 	{
@@ -30,5 +50,4 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("Received response: %s\n", string(body))
-
 }
