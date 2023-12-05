@@ -10,8 +10,6 @@ func main() {
 }
 
 func startServer() {
-	/*	mux := http.NewServeMux()
-		mux.HandleFunc("/user", user)*/
 	log.Println("Запуск веб-сервера на http://127.0.0.1:7575")
 	err := http.ListenAndServe(":7575", routes())
 	log.Fatal(err)
